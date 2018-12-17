@@ -14,4 +14,5 @@
     <color name="lightpurple">#663096</color>
     <color name="darkgray">#545454</color>
     <color name="red">#FF0000</color>
+    <color name="toolbarTransparent">#00FFFFFF</color>
 </resources>

@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relatv"
     android:layout_width="match_parent"
     android:background="@color/colorWhite"
     android:layout_height="match_parent"
@@ -151,10 +152,46 @@
                 android:layout_marginTop="10dp"
                 android:text="Publishing Date" />
 
+
+            <!--<LinearLayout-->
+                <!--android:id="@+id/publsherdate"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_below="@+id/publshdate"-->
+                <!--android:layout_gravity="center"-->
+                <!--android:layout_marginEnd="20dp"-->
+                <!--android:layout_marginLeft="20dp"-->
+                <!--android:layout_marginStart="20dp"-->
+                <!--android:layout_marginTop="10dp"-->
+                <!--android:weightSum="2"-->
+                <!--android:background="@color/gray"-->
+                <!--android:orientation="horizontal">-->
+
+                <!--<NumberPicker-->
+                    <!--android:id="@+id/picker_month"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="40dp">-->
+
+                <!--</NumberPicker>-->
+
+                <!--<NumberPicker-->
+                    <!--android:id="@+id/picker_year"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="40dp">-->
+
+                <!--</NumberPicker>-->
+
+            <!--</LinearLayout>-->
+
             <EditText
                 android:id="@+id/publsherdate"
                 android:layout_below="@+id/publshdate"
                 android:background="@color/gray"
+                android:editable="false"
+                android:focusableInTouchMode="false"
+                android:cursorVisible="false"
                 android:layout_marginTop="10dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
@@ -167,6 +204,8 @@
                 android:paddingBottom="10dp"
                 android:layout_marginLeft="20dp"
                 android:paddingLeft="10dp" />
+
+
 
             <TextView
                 android:id="@+id/grdngboxT"
@@ -182,22 +221,54 @@
                 android:layout_marginTop="10dp"
                 android:text="Grading Box?" />
 
-            <EditText
-                android:id="@+id/grdngbox"
-                android:layout_below="@+id/grdngboxT"
-                android:background="@color/gray"
-                android:layout_marginTop="10dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
-                android:textCursorDrawable="@color/darkgray"
-                android:textSize="12sp"
-                android:paddingStart="10dp"
+
+            <RadioGroup
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="10dp"
-                android:paddingBottom="10dp"
-                android:layout_marginLeft="20dp"
-                android:paddingLeft="10dp" />
+                android:layout_below="@+id/grdngboxT"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:background="@color/gray"
+                android:weightSum="2"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="110dp"
+                android:id="@+id/radioGroup">
+
+                <RadioButton
+                    android:id="@+id/rb1"
+                    android:buttonTint="@color/colorBlack"
+                    android:text="Yes"
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <RadioButton
+                    android:id="@+id/rb2"
+                    android:buttonTint="@color/colorBlack"
+                    android:text="No"
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+
+            </RadioGroup>
+            <!--<EditText-->
+                <!--android:id="@+id/grdngbox"-->
+                <!--android:layout_below="@+id/grdngboxT"-->
+                <!--android:background="@color/gray"-->
+                <!--android:layout_marginTop="10dp"-->
+                <!--android:layout_marginStart="20dp"-->
+                <!--android:layout_marginEnd="20dp"-->
+                <!--android:textCursorDrawable="@color/darkgray"-->
+                <!--android:textSize="12sp"-->
+                <!--android:paddingStart="10dp"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:paddingTop="10dp"-->
+                <!--android:paddingBottom="10dp"-->
+                <!--android:layout_marginLeft="20dp"-->
+                <!--android:paddingLeft="10dp" />-->
 
             <TextView
                 android:id="@+id/gradT"
@@ -205,13 +276,28 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:layout_below="@+id/grdngbox"
+                android:layout_below="@+id/radioGroup"
                 android:layout_marginLeft="20dp"
                 android:textColor="#272727"
                 android:textSize="15sp"
+                android:visibility="gone"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="10dp"
                 android:text="Select Grade" />
+
+                <LinearLayout
+                    android:id="@+id/spinnerGrd1"
+                    android:visibility="gone"
+                    android:layout_below="@+id/gradT"
+                    android:layout_width="match_parent"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:clickable="false"
+                    android:layout_marginTop="10dp"
+                    android:layout_height="wrap_content"
+                   android:weightSum="5"
+                    android:orientation="horizontal">
 
             <Spinner
                 android:id="@+id/spinnerGrd"
@@ -219,15 +305,24 @@
                 android:layout_height="wrap_content"
                 android:paddingTop="7dp"
                 android:paddingBottom="7dp"
-                android:layout_below="@+id/gradT"
-                android:layout_marginTop="10dp"
                 android:background="@color/gray"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
-                android:layout_marginLeft="20dp"
                 android:textSize="12sp"
+                android:layout_weight="4"
                 android:paddingStart="10dp"
                 android:paddingLeft="10dp" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:paddingTop="9dp"
+                            android:clickable="false"
+                            android:paddingBottom="9dp"
+                            android:background="@color/gray"
+                            android:layout_weight="1"
+                            android:src="@drawable/ic_arrow_drop_down_black_24dp" />
+
+                </LinearLayout>
 
             <TextView
                 android:id="@+id/pageqltyT"
@@ -235,7 +330,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:layout_below="@+id/spinnerGrd"
+                android:layout_below="@+id/spinnerGrd1"
                 android:layout_marginLeft="20dp"
                 android:textColor="#272727"
                 android:textSize="15sp"
@@ -243,21 +338,45 @@
                 android:layout_marginTop="10dp"
                 android:text="Page Quality" />
 
-            <Spinner
-                android:id="@+id/spinnerPgqlt"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingTop="7dp"
-                android:paddingBottom="7dp"
+
+            <LinearLayout
+                android:id="@+id/spinnerPgqlt1"
                 android:layout_below="@+id/pageqltyT"
-                android:layout_marginTop="10dp"
-                android:background="@color/gray"
+                android:layout_width="match_parent"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
                 android:layout_marginLeft="20dp"
-                android:textSize="12sp"
-                android:paddingStart="10dp"
-                android:paddingLeft="10dp" />
+                android:clickable="false"
+                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content"
+                android:weightSum="5"
+                android:orientation="horizontal">
+
+                <Spinner
+                    android:id="@+id/spinnerPgqlt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="7dp"
+                    android:paddingBottom="7dp"
+                    android:background="@color/gray"
+                    android:textSize="12sp"
+                    android:layout_weight="4"
+                    android:paddingStart="10dp"
+                    android:paddingLeft="10dp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:paddingTop="9dp"
+                    android:clickable="false"
+                    android:paddingBottom="9dp"
+                    android:background="@color/gray"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_arrow_drop_down_black_24dp" />
+
+            </LinearLayout>
+
 
             <TextView
                 android:id="@+id/NewstndT"
@@ -265,7 +384,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:layout_below="@+id/spinnerPgqlt"
+                android:layout_below="@+id/spinnerPgqlt1"
                 android:layout_marginLeft="20dp"
                 android:textColor="#272727"
                 android:textSize="15sp"
@@ -273,21 +392,45 @@
                 android:layout_marginTop="10dp"
                 android:text="News Stand or Direct Distribution" />
 
-            <Spinner
-                android:id="@+id/spinnerNewstnd"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingTop="7dp"
-                android:paddingBottom="7dp"
+
+            <LinearLayout
+                android:id="@+id/spinnerNewstnd1"
                 android:layout_below="@+id/NewstndT"
-                android:layout_marginTop="10dp"
-                android:background="@color/gray"
+                android:layout_width="match_parent"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
                 android:layout_marginLeft="20dp"
-                android:textSize="12sp"
-                android:paddingStart="10dp"
-                android:paddingLeft="10dp" />
+                android:clickable="false"
+                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content"
+                android:weightSum="5"
+                android:orientation="horizontal">
+
+                <Spinner
+                    android:id="@+id/spinnerNewstnd"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="7dp"
+                    android:paddingBottom="7dp"
+                    android:background="@color/gray"
+                    android:textSize="12sp"
+                    android:layout_weight="4"
+                    android:paddingStart="10dp"
+                    android:paddingLeft="10dp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:paddingTop="9dp"
+                    android:clickable="false"
+                    android:paddingBottom="9dp"
+                    android:background="@color/gray"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_arrow_drop_down_black_24dp" />
+
+            </LinearLayout>
+
 
             <TextView
                 android:id="@+id/storybyT"
@@ -295,7 +438,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:layout_below="@+id/spinnerNewstnd"
+                android:layout_below="@+id/spinnerNewstnd1"
                 android:layout_marginLeft="20dp"
                 android:textColor="#272727"
                 android:textSize="15sp"
@@ -334,22 +477,34 @@
                 android:layout_marginTop="10dp"
                 android:text="Art" />
 
-            <EditText
-                android:id="@+id/art"
+            <LinearLayout
+                android:id="@+id/liart"
                 android:layout_below="@+id/artT"
-                android:background="@color/gray"
+                android:orientation="horizontal"
                 android:layout_marginTop="10dp"
+                android:gravity="center_vertical"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
-                android:textCursorDrawable="@color/darkgray"
-                android:textSize="12sp"
-                android:paddingStart="10dp"
+                android:background="@color/gray"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingTop="10dp"
-                android:paddingBottom="10dp"
-                android:layout_marginLeft="20dp"
-                android:paddingLeft="10dp" />
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/imageart"
+                    android:layout_width="280dp"
+                    android:layout_height="100dp"
+                    android:scaleType="fitXY"
+                    android:textCursorDrawable="@color/darkgray" />
+
+                <ImageButton
+                    android:id="@+id/addart"
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/transparentbackgrnd"
+                    android:src="@drawable/ic_add_circle_outline_black_24dp" />
+
+            </LinearLayout>
 
 
             <TextView
@@ -358,7 +513,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:layout_below="@+id/art"
+                android:layout_below="@+id/liart"
                 android:layout_marginLeft="20dp"
                 android:textColor="#272727"
                 android:textSize="15sp"
@@ -366,22 +521,36 @@
                 android:layout_marginTop="10dp"
                 android:text="Cover Art" />
 
-            <EditText
-                android:id="@+id/covrart"
+            <LinearLayout
+                android:id="@+id/liCovrart"
                 android:layout_below="@+id/covrartT"
-                android:background="@color/gray"
+                android:orientation="horizontal"
                 android:layout_marginTop="10dp"
+                android:gravity="center_vertical"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
-                android:textCursorDrawable="@color/darkgray"
-                android:textSize="12sp"
-                android:paddingStart="10dp"
+                android:background="@color/gray"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingTop="10dp"
-                android:paddingBottom="10dp"
-                android:layout_marginLeft="20dp"
-                android:paddingLeft="10dp" />
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/imageCovrart"
+                    android:layout_width="280dp"
+                    android:layout_height="100dp"
+                    android:scaleType="fitXY"
+                    android:textCursorDrawable="@color/darkgray" />
+
+                <ImageButton
+                    android:id="@+id/addCovrartt"
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/transparentbackgrnd"
+                    android:src="@drawable/ic_add_circle_outline_black_24dp" />
+
+            </LinearLayout>
+
+
 
             <TextView
                 android:id="@+id/HdrPrmclrT1"
@@ -389,7 +558,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:layout_below="@+id/covrart"
+                android:layout_below="@+id/liCovrart"
                 android:layout_marginLeft="20dp"
                 android:textColor="#272727"
                 android:textSize="15sp"
@@ -397,21 +566,65 @@
                 android:layout_marginTop="10dp"
                 android:text="Header Primary Color" />
 
-            <Spinner
-                android:id="@+id/spinnerHdrClrP"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingTop="7dp"
-                android:paddingBottom="7dp"
+
+            <LinearLayout
+                android:id="@+id/liCHclr"
                 android:layout_below="@+id/HdrPrmclrT1"
+                android:orientation="horizontal"
                 android:layout_marginTop="10dp"
-                android:background="@color/gray"
+                android:gravity="center_vertical"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
-                android:layout_marginLeft="20dp"
-                android:textSize="12sp"
-                android:paddingStart="10dp"
-                android:paddingLeft="10dp" />
+                android:background="@color/gray"
+                android:weightSum="3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/spinnerHdrClrP"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:background="@color/gray"
+                    android:cursorVisible="true"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="10dp"
+                    android:paddingStart="10dp"
+                    android:paddingTop="10dp"
+                    android:textCursorDrawable="@color/darkgray"
+                    android:textSize="12sp" />
+
+                <ImageButton
+                    android:id="@+id/spinnerHdrClrPbtn"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_gravity="end"
+                    android:src="@drawable/colorchoose" />
+
+
+            </LinearLayout>
+
+
+                <!--<EditText-->
+                    <!--android:id="@+id/spinnerHdrClrP"-->
+                    <!--android:layout_below="@+id/HdrPrmclrT1"-->
+                    <!--android:background="@color/gray"-->
+                    <!--android:editable="false"-->
+                    <!--android:drawableRight="@drawable/ic_arrow_drop_down_black_24dp"-->
+                    <!--android:focusableInTouchMode="false"-->
+                    <!--android:cursorVisible="false"-->
+                    <!--android:layout_marginTop="10dp"-->
+                    <!--android:layout_marginStart="20dp"-->
+                    <!--android:layout_marginEnd="20dp"-->
+                    <!--android:textCursorDrawable="@color/darkgray"-->
+                    <!--android:textSize="12sp"-->
+                    <!--android:paddingStart="10dp"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:paddingTop="10dp"-->
+                    <!--android:paddingBottom="10dp"-->
+                    <!--android:layout_marginLeft="20dp"-->
+                    <!--android:paddingLeft="10dp" />-->
 
 
             <TextView
@@ -420,7 +633,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:layout_below="@+id/spinnerHdrClrP"
+                android:layout_below="@+id/liCHclr"
                 android:layout_marginLeft="20dp"
                 android:textColor="#272727"
                 android:textSize="15sp"
@@ -428,21 +641,138 @@
                 android:layout_marginTop="10dp"
                 android:text="Header Secondry Color" />
 
-            <Spinner
-                android:id="@+id/spinnerHdrClrS"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingTop="7dp"
-                android:paddingBottom="7dp"
+
+            <LinearLayout
+                android:id="@+id/liCPclr"
                 android:layout_below="@+id/HdrPrmclrT2"
+                android:orientation="horizontal"
                 android:layout_marginTop="10dp"
-                android:background="@color/gray"
+                android:gravity="center_vertical"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
+                android:background="@color/gray"
+                android:weightSum="3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/spinnerHdrClrS"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:background="@color/gray"
+                    android:cursorVisible="true"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="10dp"
+                    android:paddingStart="10dp"
+                    android:paddingTop="10dp"
+                    android:textCursorDrawable="@color/darkgray"
+                    android:textSize="12sp" />
+
+                <ImageButton
+                    android:id="@+id/spinnerPdrClrPbtn"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_gravity="end"
+                    android:src="@drawable/colorchoose" />
+
+
+            </LinearLayout>
+
+                <!--<EditText-->
+                    <!--android:id="@+id/spinnerHdrClrS"-->
+                    <!--android:layout_below="@+id/HdrPrmclrT2"-->
+                    <!--android:editable="false"-->
+                    <!--android:drawableRight="@drawable/ic_arrow_drop_down_black_24dp"-->
+                    <!--android:focusableInTouchMode="false"-->
+                    <!--android:cursorVisible="false"-->
+                    <!--android:background="@color/gray"-->
+                    <!--android:layout_marginTop="10dp"-->
+                    <!--android:layout_marginStart="20dp"-->
+                    <!--android:layout_marginEnd="20dp"-->
+                    <!--android:textCursorDrawable="@color/darkgray"-->
+                    <!--android:textSize="12sp"-->
+                    <!--android:paddingStart="10dp"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:paddingTop="10dp"-->
+                    <!--android:paddingBottom="10dp"-->
+                    <!--android:layout_marginLeft="20dp"-->
+                    <!--android:paddingLeft="10dp" />-->
+
+
+            <TextView
+                android:id="@+id/textcolor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/liCPclr"
                 android:layout_marginLeft="20dp"
-                android:textSize="12sp"
-                android:paddingStart="10dp"
-                android:paddingLeft="10dp" />
+                android:textColor="#272727"
+                android:textSize="15sp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:text="Text Color" />
+
+
+            <LinearLayout
+                android:id="@+id/liTxtclr"
+                android:layout_below="@+id/textcolor"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:gravity="center_vertical"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:background="@color/gray"
+                android:weightSum="3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/textclr"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:background="@color/gray"
+                    android:cursorVisible="true"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="10dp"
+                    android:paddingStart="10dp"
+                    android:paddingTop="10dp"
+                    android:textCursorDrawable="@color/darkgray"
+                    android:textSize="12sp" />
+
+                <ImageButton
+                    android:id="@+id/textclrbtn"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_gravity="end"
+                    android:src="@drawable/colorchoose" />
+
+
+            </LinearLayout>
+
+            <!--<EditText-->
+                <!--android:id="@+id/textclr"-->
+                <!--android:layout_below="@+id/textcolor"-->
+                <!--android:editable="false"-->
+                <!--android:drawableRight="@drawable/ic_arrow_drop_down_black_24dp"-->
+                <!--android:focusableInTouchMode="false"-->
+                <!--android:cursorVisible="false"-->
+                <!--android:background="@color/gray"-->
+                <!--android:layout_marginTop="10dp"-->
+                <!--android:layout_marginStart="20dp"-->
+                <!--android:layout_marginEnd="20dp"-->
+                <!--android:textCursorDrawable="@color/darkgray"-->
+                <!--android:textSize="12sp"-->
+                <!--android:paddingStart="10dp"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:paddingTop="10dp"-->
+                <!--android:paddingBottom="10dp"-->
+                <!--android:layout_marginLeft="20dp"-->
+                <!--android:paddingLeft="10dp" />-->
 
             <TextView
                 android:id="@+id/spclrqstT"
@@ -450,29 +780,31 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:layout_below="@+id/spinnerHdrClrS"
+                android:layout_below="@+id/liTxtclr"
                 android:layout_marginLeft="20dp"
                 android:textColor="#272727"
                 android:textSize="15sp"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="10dp"
-                android:text="Special Requests" />
+                android:text="Additional Notes" />
+
 
             <EditText
                 android:id="@+id/sclrqst"
-                android:layout_below="@+id/spclrqstT"
-                android:background="@color/gray"
-                android:layout_marginTop="10dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
-                android:textCursorDrawable="@color/darkgray"
-                android:textSize="12sp"
-                android:paddingStart="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="10dp"
-                android:paddingBottom="10dp"
-                android:layout_marginLeft="20dp"
+                android:paddingBottom="100dp"
+                android:layout_below="@+id/spclrqstT"
+                android:textCursorDrawable="@color/darkgray"
+                android:background="@color/gray"
+                android:gravity="top|left"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:textSize="12sp"
+                android:paddingStart="10dp"
+                android:inputType="textMultiLine"
                 android:paddingLeft="10dp" />
 
 
