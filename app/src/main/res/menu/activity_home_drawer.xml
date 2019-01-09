@@ -3,15 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-    <group android:checkableBehavior="single"
-        android:id="@+id/menu_top1">
 
-        <item
-            android:id="@+id/nav_about"
-            android:icon="@drawable/ic_people_outline_black_24dp"
-            android:title="About" />
-
-    </group>
 
     <group android:checkableBehavior="single"
         android:id="@+id/menu_top2">
@@ -30,6 +22,16 @@
             android:id="@+id/nav_history"
             android:icon="@drawable/ic_history_black_24dp"
             android:title="History" />
+    </group>
+
+    <group android:checkableBehavior="single"
+        android:id="@+id/menu_top1">
+
+        <item
+            android:id="@+id/nav_about"
+            android:icon="@drawable/ic_people_outline_black_24dp"
+            android:title="About" />
+
     </group>
 
 </menu>

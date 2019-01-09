@@ -18,10 +18,10 @@ import java.util.Calendar;
  * Created by User on 17-Dec-18.
  */
 
-public class
-MonthYearPickerDialog  extends DialogFragment {
+public class MonthYearPickerDialog  extends DialogFragment {
 
-    private static final int MAX_YEAR = 2099;
+    private static final int MAX_YEAR = 2030;
+    private static final int MIN_YEAR = 1930;
     private DatePickerDialog.OnDateSetListener listener;
 
     public void setListener(DatePickerDialog.OnDateSetListener listener) {
@@ -40,12 +40,14 @@ MonthYearPickerDialog  extends DialogFragment {
         final NumberPicker monthPicker = (NumberPicker) dialog.findViewById(R.id.picker_month);
         final NumberPicker yearPicker = (NumberPicker) dialog.findViewById(R.id.picker_year);
 
+
         monthPicker.setMinValue(1);
         monthPicker.setMaxValue(12);
+        //monthPicker.setValue(month);
         monthPicker.setValue(cal.get(Calendar.MONTH) + 1);
 
         int year = cal.get(Calendar.YEAR);
-        yearPicker.setMinValue(2000);
+        yearPicker.setMinValue(MIN_YEAR);
         yearPicker.setMaxValue(MAX_YEAR);
         yearPicker.setValue(year);
 

@@ -13,6 +13,7 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
@@ -78,7 +79,7 @@ public class FormActivity extends AppCompatActivity {
 
     int currentColor;
      Spinner spinerGrd,spinnerPgQL,spinnerNews;
-     EditText Seriestitle,issue,publsher,pubdate,grdngbox,sortby,art,coverart,spclrqst,emailadd;
+     EditText Seriestitle,issue,publsher,pubdate,sortby,addnote,emailadd, Artname,CvrArtname;
      EditText PrmyCLR,ScryCLR,TextColorTemp;
      Spinner grade,pgqlty,news,Phclr,Shclr;
      Button ButtonSubmit;
@@ -94,12 +95,16 @@ public class FormActivity extends AppCompatActivity {
     LinearLayout Selctgrad;
     TextView gradText;
 
-    Bitmap bitmap;
+    Bitmap bitmapA,bitmapCA;
     ProgressDialog progressDialog;
     ImageButton chooseArt,chooseCvrArt;
-    ImageView imageArt,imageCvrArt;
+    ImageView imageArt,imageCArt;
     int PICK_IMAGE_REQUEST = 111;
     int PICK_IMAGE_REQUEST1 = 112;
+
+   String pageqlty;
+     String imageStringArt;
+     String imageStringCArt;
 
 
     String monthYearStr;
@@ -130,12 +135,33 @@ public class FormActivity extends AppCompatActivity {
             }
         });
 
+        imageArt = (ImageView)findViewById(R.id.imageart);
+        imageCArt = (ImageView)findViewById(R.id.imageCovrart);
+        chooseArt = (ImageButton)findViewById(R.id.addart);
+        chooseCvrArt = (ImageButton)findViewById(R.id.addCovrartt);
+        ButtonSubmit=(Button)findViewById(R.id.buttonsbmt);
+        Artname=(EditText)findViewById(R.id.artname);
+        CvrArtname=(EditText)findViewById(R.id.Cvrartname);
 
         radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
         radioButtonYs = (RadioButton) findViewById(R.id.rb1);
         radioButtonNo = (RadioButton) findViewById(R.id.rb2);
         Selctgrad=(LinearLayout)findViewById(R.id.spinnerGrd1);
         gradText=(TextView)findViewById(R.id.gradT);
+
+        Seriestitle=(EditText)findViewById(R.id.series);
+        issue=(EditText)findViewById(R.id.issue);
+        publsher=(EditText)findViewById(R.id.publsher);
+        pubdate=(EditText)findViewById(R.id.publsherdate);
+        sortby=(EditText)findViewById(R.id.storyby);
+        addnote=(EditText)findViewById(R.id.sclrqst);
+        emailadd=(EditText)findViewById(R.id.editTextemail);
+        PrmyCLR=(EditText)findViewById(R.id.spinnerHdrClrP);
+        PrmryClrBtn=(ImageButton)findViewById(R.id.spinnerHdrClrPbtn);
+        ScnClrBtn=(ImageButton)findViewById(R.id.spinnerPdrClrPbtn);
+        ScryCLR=(EditText)findViewById(R.id.spinnerHdrClrS);
+        TextColorTemp=(EditText)findViewById(R.id.textclr);
+        TextClr=(ImageButton)findViewById(R.id.textclrbtn);
 
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -158,11 +184,6 @@ public class FormActivity extends AppCompatActivity {
             }
         });
 
-        imageArt = (ImageView)findViewById(R.id.imageart);
-        imageCvrArt = (ImageView)findViewById(R.id.imageCovrart);
-        chooseArt = (ImageButton)findViewById(R.id.addart);
-        chooseCvrArt = (ImageButton)findViewById(R.id.addCovrartt);
-        ButtonSubmit=(Button)findViewById(R.id.buttonsbmt);
         chooseArt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -236,7 +257,11 @@ public class FormActivity extends AppCompatActivity {
         //spinnerPgQL.setFocusableInTouchMode(true);
         String[] users1 = new String[]{
                 "Please Select Page Quality*",
-                "WHITE Pages","OFF WHITE TO WHITE Pages","OFF WHITE Pages","BRITTLE Pages"
+                "White Pages",
+                "Off White To White Pages",
+                "Off White Pages",
+                "Brittle Pages",
+                "Please Do Not Mention This Item"
         };
 
         ArrayAdapter<String> spinnerArrayAdapter1 = new ArrayAdapter<String>(
@@ -278,7 +303,9 @@ public class FormActivity extends AppCompatActivity {
         //spinnerPgQL.setFocusableInTouchMode(true);
         String[] users1News = new String[]{
                 "News Stand or Direct Distribution*",
-                "News Stand","Direct Distribution"
+                "News Stand",
+                "Direct Distribution",
+                "Please Do Not Mention This Item"
         };
 
         ArrayAdapter<String> spinnerArrayAdapterNews = new ArrayAdapter<String>(
@@ -317,23 +344,6 @@ public class FormActivity extends AppCompatActivity {
 
 
 
-        Seriestitle=(EditText)findViewById(R.id.series);
-        issue=(EditText)findViewById(R.id.issue);
-        publsher=(EditText)findViewById(R.id.publsher);
-        pubdate=(EditText)findViewById(R.id.publsherdate);
-        //grdngbox=(EditText)findViewById(R.id.grdngbox);
-        sortby=(EditText)findViewById(R.id.storyby);
-       // art=(EditText)findViewById(R.id.art);
-       // coverart=(EditText)findViewById(R.id.covrart);
-        spclrqst=(EditText)findViewById(R.id.sclrqst);
-        emailadd=(EditText)findViewById(R.id.editTextemail);
-
-        PrmyCLR=(EditText)findViewById(R.id.spinnerHdrClrP);
-        PrmryClrBtn=(ImageButton)findViewById(R.id.spinnerHdrClrPbtn);
-        ScnClrBtn=(ImageButton)findViewById(R.id.spinnerPdrClrPbtn);
-        ScryCLR=(EditText)findViewById(R.id.spinnerHdrClrS);
-        TextColorTemp=(EditText)findViewById(R.id.textclr);
-        TextClr=(ImageButton)findViewById(R.id.textclrbtn);
 
         PrmryClrBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -353,7 +363,8 @@ public class FormActivity extends AppCompatActivity {
             }
         });
 
-        TextClr.setOnClickListener(new View.OnClickListener() {
+        TextClr.setOnClickListener(
+                new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -365,97 +376,42 @@ public class FormActivity extends AppCompatActivity {
         pubdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                // openDatePicker();
                 MonthYearPickerDialog pickerDialog = new MonthYearPickerDialog();
                 pickerDialog.setListener(new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker datePicker, int year, int month, int i2) {
-                        monthYearStr = year + "-" + (month + 1) + "-" + i2;
+
+
+
+                        monthYearStr = (year + "-" + (month + 1) + "-" + i2);
                         pubdate.setText(formatMonthYear(monthYearStr));
                     }
+
                 });
                 pickerDialog.show(getSupportFragmentManager(),"MonthYearPickerDialog");
             }
 
         });
 
-
         ButtonSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                progressDialog = new ProgressDialog(FormActivity.this);
-                progressDialog.setMessage("Uploading, please wait...");
-                progressDialog.show();
+               // SubmitData();
 
-                // encode
-                ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
-                byte[] imageBytes = baos.toByteArray();
-                final String imageString = Base64.encodeToString(imageBytes, Base64.DEFAULT);
-
-                Log.e("image", String.valueOf(imageString));
-
-                StringRequest request = new StringRequest(Request.Method.POST, "",
-                        new Response.Listener<String>(){
-                            @Override
-                            public void onResponse(String s) {
-                                Log.e("responce", s);
-                                progressDialog.dismiss();
-
-                                try {
-                                    JSONObject obj = new JSONObject(s);
-                                    String success=obj.getString("s");
-                                    String error=obj.getString("e");
-                                    String msg=obj.getString("m");
-
-                                    if(success.equalsIgnoreCase("1")){
-                                        Toast.makeText(FormActivity.this, msg, Toast.LENGTH_LONG).show();
-                                    }
-                                    else{
-                                        Toast.makeText(FormActivity.this, msg, Toast.LENGTH_LONG).show();
-                                    }
-
-                                }
-                                catch (JSONException e){
-                                    e.printStackTrace();
-                                    Toast.makeText(FormActivity.this,e.getMessage(), Toast.LENGTH_SHORT).show();
-                                    progressDialog.dismiss();
-                                }
-                            }
-                        },new Response.ErrorListener(){
-                    @Override
-                    public void onErrorResponse(VolleyError volleyError) {
-                        Toast.makeText(FormActivity.this, volleyError.getMessage(), Toast.LENGTH_LONG).show();
-                        progressDialog.dismiss();
-                    }
-                }) {
-
-                    @Override
-                    protected Map<String, String> getParams() throws AuthFailureError {
-                        Map<String, String> parameters = new HashMap<String, String>();
-                        parameters.put("image", imageString);
-                        return parameters;
-                    }
-                };
-
-                RequestQueue rQueue = Volley.newRequestQueue(FormActivity.this);
-                rQueue.add(request);
+                if(isValidate())
+                {
+                    SubmitData();
+                }
             }
+
         });
-
-
-//        button.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if(isValidate())
-//                {
-//                    //SubmitData();
-//                }
-//
-//            }
-//        });
     }
+
+
+
 
     String formatMonthYear(String str) {
         Date date = null;
@@ -472,24 +428,24 @@ public class FormActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
-            Uri filePath = data.getData();
+            Uri filePathA = data.getData();
 
             try {
 
-                bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
-                imageArt.setImageBitmap(bitmap);
+                bitmapA = MediaStore.Images.Media.getBitmap(getContentResolver(), filePathA);
+                imageArt.setImageBitmap(bitmapA);
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
 
         if (requestCode == PICK_IMAGE_REQUEST1 && resultCode == RESULT_OK && data != null && data.getData() != null) {
-            Uri filePath = data.getData();
+            Uri filePathCA = data.getData();
 
             try {
 
-                bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
-                imageCvrArt.setImageBitmap(bitmap);
+                bitmapCA = MediaStore.Images.Media.getBitmap(getContentResolver(), filePathCA);
+                imageCArt.setImageBitmap(bitmapCA);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -615,49 +571,189 @@ public class FormActivity extends AppCompatActivity {
     }
 
 
+    private boolean isValidate()
+    {
+        final String mail = emailadd.getText().toString().trim();
+
+        if (radioGroup.getCheckedRadioButtonId()==-1) {
+            radioButtonYs.setError("Please select one option");
+            radioGroup.requestFocus();
+            return false;
+
+        }
+//        if (imageArt.getDrawable() == null){
+//            imageArt.requestFocus();
+//
+//            return false;
+//        }
+//        if (imageCArt.getDrawable() == null){
+//            imageCArt.requestFocus();
+//
+//            return false;
+//        }
+
+        if (PrmyCLR.getText().toString().length() == 0) {
+            PrmyCLR.setError("Please select color");
+            PrmyCLR.requestFocus();
+            return false;
+        }
+        if (ScryCLR.getText().toString().length() == 0) {
+            ScryCLR.setError("Please select color");
+            ScryCLR.requestFocus();
+            return false;
+        }
+        if (TextColorTemp.getText().toString().length() == 0) {
+            TextColorTemp.setError("Please select color");
+            TextColorTemp.requestFocus();
+            return false;
+        }
+
+        if (TextUtils.isEmpty(mail)) {
+            emailadd.setError("Please enter your email");
+            emailadd.requestFocus();
+            return false;
+        }
+
+        if (!Patterns.EMAIL_ADDRESS.matcher(mail).matches()) {
+            emailadd.setError("Enter a valid email");
+            emailadd.requestFocus();
+            return false;
+        }
+
+        return true;
+    }
+
+    private void SubmitData() {
+        progressDialog = new ProgressDialog(FormActivity.this);
+        progressDialog.setMessage("Uploading, please wait...");
+        progressDialog.show();
+
+        final String seirstitle = Seriestitle.getText().toString().trim();
+        final String issuetxt = issue.getText().toString().trim();
+        final String publisher = publsher.getText().toString().trim();
+        final String pubdatetxt = pubdate.getText().toString().trim();
+        final String geadingbox = ((RadioButton) findViewById(radioGroup.getCheckedRadioButtonId())).getText().toString();
+        final String slctgrd = spinerGrd.getSelectedItem().toString();
+        if (spinnerPgQL.getSelectedItem().toString().equalsIgnoreCase("Please do not mention this item"))
+        {
+             pageqlty =" ";
+        }
+        else {
+             pageqlty = spinnerPgQL.getSelectedItem().toString();
+        }
+       // final String pageqlty = spinnerPgQL.getSelectedItem().toString();
+        final String newstand = spinnerNews.getSelectedItem().toString();
+        final String sortbytxt = sortby.getText().toString().trim();
+        final String hdrprmclr =  PrmyCLR.getText().toString().trim();
+        final String hdrscndclr =  ScryCLR.getText().toString().trim();
+        final String textcolor =  TextColorTemp.getText().toString().trim();
+        final String addnotes =  addnote.getText().toString().trim();
+        final String email =  emailadd.getText().toString().trim();
+        final String Artnametxt = Artname.getText().toString().trim();
+        final String CArtname = CvrArtname.getText().toString().trim();
+
+       // Log.e("pgqlty",pageqlty);
 
 
-//    private boolean isValidate()
-//    {
-//        final String mail = editTextemail.getText().toString().trim();
-//        //int pos =spiner.getSelectedItemPosition();
-//
-//        if (editTextfnm.getText().toString().length() == 0) {
-//            editTextfnm.setError("First name not entered");
-//            editTextfnm.requestFocus();
-//            return false;
-//        }
-//
-//
-//        if (TextUtils.isEmpty(mail)) {
-//            editTextmail.setError("Please enter your email");
-//            editTextmail.requestFocus();
-//            return false;
-//        }
-//
-//        if (!Patterns.EMAIL_ADDRESS.matcher(mail).matches()) {
-//            editTextmail.setError("Enter a valid email");
-//            editTextmail.requestFocus();
-//            return false;
-//        }
-//
-//        if (editTextstreet.getText().toString().length() == 0) {
-//            editTextstreet.setError("Street not entered");
-//            editTextstreet.requestFocus();
-//            return false;
-//        }
-//
-//        if (editTextcity.getText().toString().length() == 0) {
-//            editTextcity.setError("City not entered");
-//            editTextcity.requestFocus();
-//            return false;
-//        }
-////        if (pos==0){
-////            spiner.requestFocus();
-////            Toast.makeText(SellersActivity.this, "Please Select State", Toast.LENGTH_LONG).show();
-////            return false;
-////        }
-//        return true;
-//    }
+        // encodeArt
+        if (imageArt.getDrawable()==null)
+        {
+            imageStringArt=getString(R.string.BlankImage);
+        }
+        else {
 
-}
+            ByteArrayOutputStream baosA = new ByteArrayOutputStream();
+            bitmapA.compress(Bitmap.CompressFormat.JPEG, 100, baosA);
+            byte[] imageBytesA = baosA.toByteArray();
+            imageStringArt = Base64.encodeToString(imageBytesA, Base64.DEFAULT);
+        }
+        // encodeCArt
+        if (imageCArt.getDrawable()==null)
+        {
+            imageStringCArt=getString(R.string.BlankImage);
+        }
+        else {
+
+            ByteArrayOutputStream baosCA = new ByteArrayOutputStream();
+            bitmapCA.compress(Bitmap.CompressFormat.JPEG, 100, baosCA);
+            byte[] imageBytesCA = baosCA.toByteArray();
+            imageStringCArt = Base64.encodeToString(imageBytesCA, Base64.DEFAULT);
+        }
+        //  Log.e("imageArt", String.valueOf(imageStringArt));
+        //   Log.e("imageCArt", String.valueOf(imageStringCArt));
+
+        String url="http://demotbs.com/dev/comicskin/webservices/registration?";
+
+        StringRequest request = new StringRequest(Request.Method.POST,url,
+                new Response.Listener<String>(){
+                    @Override
+                    public void onResponse(String s) {
+                        Log.e("responce", s);
+                        progressDialog.dismiss();
+
+                        try {
+                            JSONObject obj = new JSONObject(s);
+                            String success=obj.getString("s");
+                            String error=obj.getString("e");
+                            String msg=obj.getString("m");
+
+                            if(success.equalsIgnoreCase("1")){
+                                Toast.makeText(FormActivity.this, msg, Toast.LENGTH_LONG).show();
+                                String actname ="History";
+                                SharedPreferences pref = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+                                SharedPreferences.Editor edit = pref.edit();
+                                edit.putString("Actvname",actname);
+                                edit.apply();
+                                Intent intent=new Intent(FormActivity.this,HistoryActivity.class);
+                                startActivity(intent);
+                            }
+                            else{
+                                Toast.makeText(FormActivity.this, msg, Toast.LENGTH_LONG).show();
+                            }
+
+                        }
+                        catch (JSONException e){
+                            e.printStackTrace();
+                            Toast.makeText(FormActivity.this,e.getMessage(), Toast.LENGTH_SHORT).show();
+                            progressDialog.dismiss();
+                        }
+                    }
+                },new Response.ErrorListener(){
+            @Override
+            public void onErrorResponse(VolleyError volleyError) {
+                Toast.makeText(FormActivity.this, volleyError.getMessage(), Toast.LENGTH_LONG).show();
+                progressDialog.dismiss();
+            }
+        }) {
+
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> parameters = new HashMap<String, String>();
+                parameters.put("title", seirstitle);
+                parameters.put("issue", issuetxt);
+                parameters.put("publisher", publisher);
+                parameters.put("publishing_date", pubdatetxt);
+                parameters.put("grading_box", geadingbox);
+                parameters.put("grade", slctgrd);
+                parameters.put("page_quality", pageqlty);
+                parameters.put("news_stand", newstand);
+                parameters.put("story_by", sortbytxt);
+                parameters.put("art", imageStringArt);
+                parameters.put("art_name", Artnametxt);
+                parameters.put("cover_art", imageStringCArt);
+                parameters.put("cover_art_name", CArtname);
+                parameters.put("header_primary_color", hdrprmclr);
+                parameters.put("header_secondary_color", hdrscndclr);
+                parameters.put("font_color", textcolor);
+                parameters.put("additional_notes", addnotes);
+                parameters.put("email", email);
+                return parameters;
+            }
+        };
+
+        RequestQueue rQueue = Volley.newRequestQueue(FormActivity.this);
+        rQueue.add(request);
+    }
+
+    }
+

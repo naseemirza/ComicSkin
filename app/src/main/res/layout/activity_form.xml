@@ -26,10 +26,10 @@
         android:layout_alignParentTop="true"
         android:gravity="center"
         android:textColor="@color/colorBlack"
-        android:textSize="25sp"
+        android:textSize="20sp"
         android:textAllCaps="false"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="10dp"
         android:text="Create Form" />
 
     <TextView
@@ -239,6 +239,7 @@
                     android:id="@+id/rb1"
                     android:buttonTint="@color/colorBlack"
                     android:text="Yes"
+                   android:layout_marginStart="60dp"
                     android:layout_weight="1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
@@ -303,12 +304,11 @@
                 android:id="@+id/spinnerGrd"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="7dp"
-                android:paddingBottom="7dp"
+                android:paddingTop="3dp"
+                android:paddingBottom="3dp"
                 android:background="@color/gray"
                 android:textSize="12sp"
                 android:layout_weight="4"
-                android:paddingStart="10dp"
                 android:paddingLeft="10dp" />
 
                         <ImageView
@@ -317,7 +317,7 @@
                             android:layout_gravity="center"
                             android:paddingTop="9dp"
                             android:clickable="false"
-                            android:paddingBottom="9dp"
+                            android:paddingBottom="8dp"
                             android:background="@color/gray"
                             android:layout_weight="1"
                             android:src="@drawable/ic_arrow_drop_down_black_24dp" />
@@ -343,8 +343,7 @@
                 android:id="@+id/spinnerPgqlt1"
                 android:layout_below="@+id/pageqltyT"
                 android:layout_width="match_parent"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
+                android:layout_marginRight="20dp"
                 android:layout_marginLeft="20dp"
                 android:clickable="false"
                 android:layout_marginTop="10dp"
@@ -356,12 +355,11 @@
                     android:id="@+id/spinnerPgqlt"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingTop="7dp"
-                    android:paddingBottom="7dp"
+                    android:paddingTop="3dp"
+                    android:paddingBottom="3dp"
                     android:background="@color/gray"
                     android:textSize="12sp"
                     android:layout_weight="4"
-                    android:paddingStart="10dp"
                     android:paddingLeft="10dp" />
 
                 <ImageView
@@ -370,7 +368,7 @@
                     android:layout_gravity="center"
                     android:paddingTop="9dp"
                     android:clickable="false"
-                    android:paddingBottom="9dp"
+                    android:paddingBottom="8dp"
                     android:background="@color/gray"
                     android:layout_weight="1"
                     android:src="@drawable/ic_arrow_drop_down_black_24dp" />
@@ -397,8 +395,7 @@
                 android:id="@+id/spinnerNewstnd1"
                 android:layout_below="@+id/NewstndT"
                 android:layout_width="match_parent"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
+                android:layout_marginRight="20dp"
                 android:layout_marginLeft="20dp"
                 android:clickable="false"
                 android:layout_marginTop="10dp"
@@ -410,12 +407,11 @@
                     android:id="@+id/spinnerNewstnd"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingTop="7dp"
-                    android:paddingBottom="7dp"
+                    android:paddingTop="3dp"
+                    android:paddingBottom="3dp"
                     android:background="@color/gray"
                     android:textSize="12sp"
                     android:layout_weight="4"
-                    android:paddingStart="10dp"
                     android:paddingLeft="10dp" />
 
                 <ImageView
@@ -424,7 +420,7 @@
                     android:layout_gravity="center"
                     android:paddingTop="9dp"
                     android:clickable="false"
-                    android:paddingBottom="9dp"
+                    android:paddingBottom="8dp"
                     android:background="@color/gray"
                     android:layout_weight="1"
                     android:src="@drawable/ic_arrow_drop_down_black_24dp" />
@@ -491,14 +487,29 @@
 
                 <ImageView
                     android:id="@+id/imageart"
-                    android:layout_width="280dp"
+                    android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:scaleType="fitXY"
                     android:textCursorDrawable="@color/darkgray" />
 
+                <EditText
+                    android:id="@+id/artname"
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorWhite"
+                    android:hint="Art Name"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="5dp"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="10dp"
+                    android:paddingStart="10dp"
+                    android:paddingTop="10dp"
+                    android:textCursorDrawable="@color/darkgray"
+                    android:textSize="12sp" />
+
                 <ImageButton
                     android:id="@+id/addart"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginEnd="5dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/transparentbackgrnd"
@@ -535,22 +546,35 @@
 
                 <ImageView
                     android:id="@+id/imageCovrart"
-                    android:layout_width="280dp"
+                    android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:scaleType="fitXY"
                     android:textCursorDrawable="@color/darkgray" />
 
+                <EditText
+                    android:id="@+id/Cvrartname"
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorWhite"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="5dp"
+                    android:hint="Cover Art Name"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="10dp"
+                    android:paddingStart="10dp"
+                    android:paddingTop="10dp"
+                    android:textCursorDrawable="@color/darkgray"
+                    android:textSize="12sp" />
+
                 <ImageButton
                     android:id="@+id/addCovrartt"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginEnd="5dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/transparentbackgrnd"
                     android:src="@drawable/ic_add_circle_outline_black_24dp" />
 
             </LinearLayout>
-
-
 
             <TextView
                 android:id="@+id/HdrPrmclrT1"
@@ -596,9 +620,11 @@
 
                 <ImageButton
                     android:id="@+id/spinnerHdrClrPbtn"
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
-                    android:layout_gravity="end"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="end|center"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/imgbrnshap"
                     android:src="@drawable/colorchoose" />
 
 
@@ -671,9 +697,11 @@
 
                 <ImageButton
                     android:id="@+id/spinnerPdrClrPbtn"
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
-                    android:layout_gravity="end"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="end|center"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/imgbrnshap"
                     android:src="@drawable/colorchoose" />
 
 
@@ -745,9 +773,11 @@
 
                 <ImageButton
                     android:id="@+id/textclrbtn"
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
-                    android:layout_gravity="end"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="end|center"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/imgbrnshap"
                     android:src="@drawable/colorchoose" />
 
 
@@ -822,24 +852,39 @@
                 android:layout_marginTop="10dp"
                 android:text="Email address" />
 
+            <!--<EditText-->
+                <!--android:id="@+id/editTextemail"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_below="@+id/textViewemail"-->
+                <!--android:layout_toEndOf="@+id/spinnerGrd1"-->
+                <!--android:background="@color/gray"-->
+                <!--android:ems="10"-->
+                <!--android:inputType="textEmailAddress"-->
+                <!--android:paddingBottom="10dp"-->
+                <!--android:paddingLeft="10dp"-->
+                <!--android:paddingStart="10dp"-->
+                <!--android:paddingTop="10dp"-->
+                <!--android:textCursorDrawable="@color/darkgray"-->
+                <!--android:textSize="12sp" />-->
             <EditText
                 android:id="@+id/editTextemail"
                 android:layout_below="@+id/textViewemail"
                 android:background="@color/gray"
                 android:layout_marginTop="10dp"
                 android:layout_marginStart="20dp"
-                android:textCursorDrawable="@color/darkgray"
                 android:layout_marginEnd="20dp"
+                android:textCursorDrawable="@color/darkgray"
                 android:textSize="12sp"
+                android:inputType="textEmailAddress"
                 android:paddingStart="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp"
                 android:layout_marginLeft="20dp"
-                android:paddingLeft="10dp"
-                android:ems="10"
-                android:inputType="textEmailAddress" />
+                android:paddingLeft="10dp" />
+
 
 
             <Button

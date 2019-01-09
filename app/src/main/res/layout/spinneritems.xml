@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:id="@+id/textspiner"
     android:layout_height="wrap_content"
-
-    android:textSize="13sp"
-    android:padding="5dp"
+    android:textSize="14sp"
+    android:padding="8dp"
     />
+
+    <!--android:background="@drawable/spinner_item_border"-->

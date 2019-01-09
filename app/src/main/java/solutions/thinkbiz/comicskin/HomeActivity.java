@@ -136,7 +136,7 @@ public class HomeActivity extends AppCompatActivity
             startActivity(intent);
         } else if (id == R.id.nav_form) {
 
-            String actname="Form";
+            String actname="Comic Skin";
             SharedPreferences pref = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
             SharedPreferences.Editor edit = pref.edit();
 
