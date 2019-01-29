@@ -64,11 +64,13 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.OutputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -77,9 +79,9 @@ import yuku.ambilwarna.AmbilWarnaDialog;
 
 public class FormActivity extends AppCompatActivity {
 
-    int currentColor;
+     int currentColor;
      Spinner spinerGrd,spinnerPgQL,spinnerNews;
-     EditText Seriestitle,issue,publsher,pubdate,sortby,addnote,emailadd, Artname,CvrArtname;
+     EditText Seriestitle,issue,publsher,pubdate,sortby,addnote,emailadd, Artname; //,CvrArtname
      EditText PrmyCLR,ScryCLR,TextColorTemp;
      Spinner grade,pgqlty,news,Phclr,Shclr;
      Button ButtonSubmit;
@@ -95,17 +97,16 @@ public class FormActivity extends AppCompatActivity {
     LinearLayout Selctgrad;
     TextView gradText;
 
-    Bitmap bitmapA,bitmapCA;
+   Bitmap bitmapA,bitmapCA;
     ProgressDialog progressDialog;
-    ImageButton chooseArt,chooseCvrArt;
-    ImageView imageArt,imageCArt;
+    ImageButton chooseArt; //,chooseCvrArt
+    ImageView imageArt; //,imageCArt
     int PICK_IMAGE_REQUEST = 111;
     int PICK_IMAGE_REQUEST1 = 112;
 
    String pageqlty;
      String imageStringArt;
      String imageStringCArt;
-
 
     String monthYearStr;
     SimpleDateFormat sdf = new SimpleDateFormat("MMM yyyy");
@@ -136,12 +137,12 @@ public class FormActivity extends AppCompatActivity {
         });
 
         imageArt = (ImageView)findViewById(R.id.imageart);
-        imageCArt = (ImageView)findViewById(R.id.imageCovrart);
+       // imageCArt = (ImageView)findViewById(R.id.imageCovrart);
         chooseArt = (ImageButton)findViewById(R.id.addart);
-        chooseCvrArt = (ImageButton)findViewById(R.id.addCovrartt);
+       // chooseCvrArt = (ImageButton)findViewById(R.id.addCovrartt);
         ButtonSubmit=(Button)findViewById(R.id.buttonsbmt);
         Artname=(EditText)findViewById(R.id.artname);
-        CvrArtname=(EditText)findViewById(R.id.Cvrartname);
+       // CvrArtname=(EditText)findViewById(R.id.Cvrartname);
 
         radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
         radioButtonYs = (RadioButton) findViewById(R.id.rb1);
@@ -177,34 +178,10 @@ public class FormActivity extends AppCompatActivity {
                     gradText.setVisibility(View.GONE);
                     Selctgrad.setVisibility(View.GONE);
                 }
-
-
                // Log.e("value",result);
 
             }
         });
-
-        chooseArt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.setType("image/*");
-                intent.setAction(Intent.ACTION_PICK);
-                startActivityForResult(Intent.createChooser(intent, "Select Image"), PICK_IMAGE_REQUEST);
-            }
-        });
-
-        chooseCvrArt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.setType("image/*");
-                intent.setAction(Intent.ACTION_PICK);
-                startActivityForResult(Intent.createChooser(intent, "Select Image"), PICK_IMAGE_REQUEST1);
-            }
-        });
-
-
 
 
 
@@ -342,9 +319,6 @@ public class FormActivity extends AppCompatActivity {
 
          currentColor  = ContextCompat.getColor(this, R.color.gray);
 
-
-
-
         PrmryClrBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -383,8 +357,6 @@ public class FormActivity extends AppCompatActivity {
                     @Override
                     public void onDateSet(DatePicker datePicker, int year, int month, int i2) {
 
-
-
                         monthYearStr = (year + "-" + (month + 1) + "-" + i2);
                         pubdate.setText(formatMonthYear(monthYearStr));
                     }
@@ -406,12 +378,30 @@ public class FormActivity extends AppCompatActivity {
                     SubmitData();
                 }
             }
+        });
+
+        chooseArt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent();
+                intent.setType("image/*");
+                intent.setAction(Intent.ACTION_PICK);
+                startActivityForResult(Intent.createChooser(intent, "Select Image"), PICK_IMAGE_REQUEST);
+            }
 
         });
+
+//        chooseCvrArt.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent();
+//                intent.setType("image/*");
+//                intent.setAction(Intent.ACTION_PICK);
+//                startActivityForResult(Intent.createChooser(intent, "Select Image"), PICK_IMAGE_REQUEST1);
+//            }
+//        });
     }
-
-
-
 
     String formatMonthYear(String str) {
         Date date = null;
@@ -427,29 +417,29 @@ public class FormActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
-            Uri filePathA = data.getData();
+            if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
+                Uri filePathA = data.getData();
 
-            try {
-
-                bitmapA = MediaStore.Images.Media.getBitmap(getContentResolver(), filePathA);
-                imageArt.setImageBitmap(bitmapA);
-            } catch (Exception e) {
-                e.printStackTrace();
+                try {
+                        bitmapA = MediaStore.Images.Media.getBitmap(getContentResolver(), filePathA);
+                        imageArt.setImageBitmap(bitmapA);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
-        }
 
-        if (requestCode == PICK_IMAGE_REQUEST1 && resultCode == RESULT_OK && data != null && data.getData() != null) {
-            Uri filePathCA = data.getData();
 
-            try {
-
-                bitmapCA = MediaStore.Images.Media.getBitmap(getContentResolver(), filePathCA);
-                imageCArt.setImageBitmap(bitmapCA);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
+//        if (requestCode == PICK_IMAGE_REQUEST1 && resultCode == RESULT_OK && data != null && data.getData() != null) {
+//            Uri filePathCA = data.getData();
+//
+//            try {
+//
+//                bitmapCA = MediaStore.Images.Media.getBitmap(getContentResolver(), filePathCA);
+//                imageCArt.setImageBitmap(bitmapCA);
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
+//        }
     }
 
 
@@ -497,8 +487,6 @@ public class FormActivity extends AppCompatActivity {
 //                }, mYear, mMonth, mDay);
 //        datePickerDialog.show();
         //}
-
-
 
     private void openDialogPrmry(boolean supportsAlpha) {
 
@@ -650,35 +638,37 @@ public class FormActivity extends AppCompatActivity {
         final String addnotes =  addnote.getText().toString().trim();
         final String email =  emailadd.getText().toString().trim();
         final String Artnametxt = Artname.getText().toString().trim();
-        final String CArtname = CvrArtname.getText().toString().trim();
+     //   final String CArtname = CvrArtname.getText().toString().trim();
 
        // Log.e("pgqlty",pageqlty);
 
-
         // encodeArt
+
         if (imageArt.getDrawable()==null)
         {
             imageStringArt=getString(R.string.BlankImage);
         }
         else {
-
             ByteArrayOutputStream baosA = new ByteArrayOutputStream();
             bitmapA.compress(Bitmap.CompressFormat.JPEG, 100, baosA);
             byte[] imageBytesA = baosA.toByteArray();
             imageStringArt = Base64.encodeToString(imageBytesA, Base64.DEFAULT);
-        }
-        // encodeCArt
-        if (imageCArt.getDrawable()==null)
-        {
-            imageStringCArt=getString(R.string.BlankImage);
-        }
-        else {
 
-            ByteArrayOutputStream baosCA = new ByteArrayOutputStream();
-            bitmapCA.compress(Bitmap.CompressFormat.JPEG, 100, baosCA);
-            byte[] imageBytesCA = baosCA.toByteArray();
-            imageStringCArt = Base64.encodeToString(imageBytesCA, Base64.DEFAULT);
         }
+
+
+        // encodeCArt
+//        if (imageCArt.getDrawable()==null)
+//        {
+//            imageStringCArt=getString(R.string.BlankImage);
+//        }
+//        else {
+//
+//            ByteArrayOutputStream baosCA = new ByteArrayOutputStream();
+//            bitmapCA.compress(Bitmap.CompressFormat.JPEG, 100, baosCA);
+//            byte[] imageBytesCA = baosCA.toByteArray();
+//            imageStringCArt = Base64.encodeToString(imageBytesCA, Base64.DEFAULT);
+//        }
         //  Log.e("imageArt", String.valueOf(imageStringArt));
         //   Log.e("imageCArt", String.valueOf(imageStringCArt));
 
@@ -689,6 +679,7 @@ public class FormActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(String s) {
                         Log.e("responce", s);
+
                         progressDialog.dismiss();
 
                         try {
@@ -740,8 +731,8 @@ public class FormActivity extends AppCompatActivity {
                 parameters.put("story_by", sortbytxt);
                 parameters.put("art", imageStringArt);
                 parameters.put("art_name", Artnametxt);
-                parameters.put("cover_art", imageStringCArt);
-                parameters.put("cover_art_name", CArtname);
+                //parameters.put("cover_art", imageStringCArt);
+               // parameters.put("cover_art_name", CArtname);
                 parameters.put("header_primary_color", hdrprmclr);
                 parameters.put("header_secondary_color", hdrscndclr);
                 parameters.put("font_color", textcolor);

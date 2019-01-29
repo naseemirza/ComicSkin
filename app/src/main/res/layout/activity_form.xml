@@ -459,23 +459,56 @@
                 android:layout_marginLeft="20dp"
                 android:paddingLeft="10dp" />
 
+
             <TextView
-                android:id="@+id/artT"
+            android:id="@+id/artT"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/storyby"
+            android:layout_marginLeft="20dp"
+            android:textColor="#272727"
+            android:textSize="15sp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:text="Interior Art by" />
+
+            <EditText
+            android:id="@+id/artname"
+            android:layout_below="@+id/artT"
+            android:background="@color/gray"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:textCursorDrawable="@color/darkgray"
+            android:textSize="12sp"
+            android:paddingStart="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:layout_marginLeft="20dp"
+            android:paddingLeft="10dp" />
+
+
+            <TextView
+                android:id="@+id/artTimg"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:layout_below="@+id/storyby"
+                android:layout_below="@+id/artname"
                 android:layout_marginLeft="20dp"
                 android:textColor="#272727"
                 android:textSize="15sp"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="10dp"
-                android:text="Art" />
+                android:text="Art Image  (size 100px*100px)" />
 
             <LinearLayout
                 android:id="@+id/liart"
-                android:layout_below="@+id/artT"
+                android:layout_below="@+id/artTimg"
                 android:orientation="horizontal"
                 android:layout_marginTop="10dp"
                 android:gravity="center_vertical"
@@ -490,26 +523,15 @@
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:scaleType="fitXY"
-                    android:textCursorDrawable="@color/darkgray" />
-
-                <EditText
-                    android:id="@+id/artname"
-                    android:layout_width="180dp"
-                    android:layout_height="wrap_content"
+                    android:layout_margin="3dp"
                     android:background="@color/colorWhite"
-                    android:hint="Art Name"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="5dp"
-                    android:paddingBottom="10dp"
-                    android:paddingLeft="10dp"
-                    android:paddingStart="10dp"
-                    android:paddingTop="10dp"
-                    android:textCursorDrawable="@color/darkgray"
-                    android:textSize="12sp" />
+                    android:layout_marginStart="30dp" />
+
 
                 <ImageButton
                     android:id="@+id/addart"
                     android:layout_marginEnd="5dp"
+                    android:layout_marginStart="50dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/transparentbackgrnd"
@@ -518,63 +540,7 @@
             </LinearLayout>
 
 
-            <TextView
-                android:id="@+id/covrartT"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_below="@+id/liart"
-                android:layout_marginLeft="20dp"
-                android:textColor="#272727"
-                android:textSize="15sp"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="10dp"
-                android:text="Cover Art" />
 
-            <LinearLayout
-                android:id="@+id/liCovrart"
-                android:layout_below="@+id/covrartT"
-                android:orientation="horizontal"
-                android:layout_marginTop="10dp"
-                android:gravity="center_vertical"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
-                android:background="@color/gray"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <ImageView
-                    android:id="@+id/imageCovrart"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:scaleType="fitXY"
-                    android:textCursorDrawable="@color/darkgray" />
-
-                <EditText
-                    android:id="@+id/Cvrartname"
-                    android:layout_width="180dp"
-                    android:layout_height="wrap_content"
-                    android:background="@color/colorWhite"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="5dp"
-                    android:hint="Cover Art Name"
-                    android:paddingBottom="10dp"
-                    android:paddingLeft="10dp"
-                    android:paddingStart="10dp"
-                    android:paddingTop="10dp"
-                    android:textCursorDrawable="@color/darkgray"
-                    android:textSize="12sp" />
-
-                <ImageButton
-                    android:id="@+id/addCovrartt"
-                    android:layout_marginEnd="5dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/transparentbackgrnd"
-                    android:src="@drawable/ic_add_circle_outline_black_24dp" />
-
-            </LinearLayout>
 
             <TextView
                 android:id="@+id/HdrPrmclrT1"
@@ -582,7 +548,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:layout_below="@+id/liCovrart"
+                android:layout_below="@+id/liart"
                 android:layout_marginLeft="20dp"
                 android:textColor="#272727"
                 android:textSize="15sp"

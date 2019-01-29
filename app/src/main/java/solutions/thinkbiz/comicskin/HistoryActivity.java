@@ -53,7 +53,6 @@ public class HistoryActivity extends AppCompatActivity {
         mywebview.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
         mywebview.loadUrl(url);
 
-
     }
     private class MyWebViewClient extends WebViewClient {
         @Override
