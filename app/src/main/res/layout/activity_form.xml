@@ -461,12 +461,43 @@
 
 
             <TextView
+                android:id="@+id/CAartT"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/storyby"
+                android:layout_marginLeft="20dp"
+                android:textColor="#272727"
+                android:textSize="15sp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:text="Cover Art by" />
+
+            <EditText
+                android:id="@+id/CArtname"
+                android:layout_below="@+id/CAartT"
+                android:background="@color/gray"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:textCursorDrawable="@color/darkgray"
+                android:textSize="12sp"
+                android:paddingStart="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:layout_marginLeft="20dp"
+                android:paddingLeft="10dp" />
+
+            <TextView
             android:id="@+id/artT"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_below="@+id/storyby"
+            android:layout_below="@+id/CArtname"
             android:layout_marginLeft="20dp"
             android:textColor="#272727"
             android:textSize="15sp"
@@ -490,6 +521,7 @@
             android:paddingBottom="10dp"
             android:layout_marginLeft="20dp"
             android:paddingLeft="10dp" />
+
 
 
             <TextView
@@ -707,7 +739,7 @@
                 android:textSize="15sp"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="10dp"
-                android:text="Text Color" />
+                android:text="Font Color" />
 
 
             <LinearLayout

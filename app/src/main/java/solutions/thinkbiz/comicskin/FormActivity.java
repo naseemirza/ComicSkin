@@ -81,7 +81,7 @@ public class FormActivity extends AppCompatActivity {
 
      int currentColor;
      Spinner spinerGrd,spinnerPgQL,spinnerNews;
-     EditText Seriestitle,issue,publsher,pubdate,sortby,addnote,emailadd, Artname; //,CvrArtname
+     EditText Seriestitle,issue,publsher,pubdate,sortby,addnote,emailadd, Artname,CvrArtname;
      EditText PrmyCLR,ScryCLR,TextColorTemp;
      Spinner grade,pgqlty,news,Phclr,Shclr;
      Button ButtonSubmit;
@@ -142,7 +142,7 @@ public class FormActivity extends AppCompatActivity {
        // chooseCvrArt = (ImageButton)findViewById(R.id.addCovrartt);
         ButtonSubmit=(Button)findViewById(R.id.buttonsbmt);
         Artname=(EditText)findViewById(R.id.artname);
-       // CvrArtname=(EditText)findViewById(R.id.Cvrartname);
+        CvrArtname=(EditText)findViewById(R.id.CArtname);
 
         radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
         radioButtonYs = (RadioButton) findViewById(R.id.rb1);
@@ -182,8 +182,6 @@ public class FormActivity extends AppCompatActivity {
 
             }
         });
-
-
 
         spinerGrd = (Spinner) findViewById(R.id.spinnerGrd);
         //spinerGrd.setFocusable(true);
@@ -227,7 +225,6 @@ public class FormActivity extends AppCompatActivity {
         };
         spinnerArrayAdapter.setDropDownViewResource(R.layout.spinneritems);
         spinerGrd.setAdapter(spinnerArrayAdapter);
-
 
         spinnerPgQL = (Spinner) findViewById(R.id.spinnerPgqlt);
         //spinnerPgQL.setFocusable(true);
@@ -638,7 +635,7 @@ public class FormActivity extends AppCompatActivity {
         final String addnotes =  addnote.getText().toString().trim();
         final String email =  emailadd.getText().toString().trim();
         final String Artnametxt = Artname.getText().toString().trim();
-     //   final String CArtname = CvrArtname.getText().toString().trim();
+        final String CArtname = CvrArtname.getText().toString().trim();
 
        // Log.e("pgqlty",pageqlty);
 
@@ -732,7 +729,7 @@ public class FormActivity extends AppCompatActivity {
                 parameters.put("art", imageStringArt);
                 parameters.put("art_name", Artnametxt);
                 //parameters.put("cover_art", imageStringCArt);
-               // parameters.put("cover_art_name", CArtname);
+                parameters.put("cover_art_name", CArtname);
                 parameters.put("header_primary_color", hdrprmclr);
                 parameters.put("header_secondary_color", hdrscndclr);
                 parameters.put("font_color", textcolor);
