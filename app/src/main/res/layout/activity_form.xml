@@ -152,39 +152,6 @@
                 android:layout_marginTop="10dp"
                 android:text="Publishing Date" />
 
-
-            <!--<LinearLayout-->
-                <!--android:id="@+id/publsherdate"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_below="@+id/publshdate"-->
-                <!--android:layout_gravity="center"-->
-                <!--android:layout_marginEnd="20dp"-->
-                <!--android:layout_marginLeft="20dp"-->
-                <!--android:layout_marginStart="20dp"-->
-                <!--android:layout_marginTop="10dp"-->
-                <!--android:weightSum="2"-->
-                <!--android:background="@color/gray"-->
-                <!--android:orientation="horizontal">-->
-
-                <!--<NumberPicker-->
-                    <!--android:id="@+id/picker_month"-->
-                    <!--android:layout_weight="1"-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="40dp">-->
-
-                <!--</NumberPicker>-->
-
-                <!--<NumberPicker-->
-                    <!--android:id="@+id/picker_year"-->
-                    <!--android:layout_weight="1"-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="40dp">-->
-
-                <!--</NumberPicker>-->
-
-            <!--</LinearLayout>-->
-
             <EditText
                 android:id="@+id/publsherdate"
                 android:layout_below="@+id/publshdate"
@@ -254,22 +221,6 @@
 
 
             </RadioGroup>
-            <!--<EditText-->
-                <!--android:id="@+id/grdngbox"-->
-                <!--android:layout_below="@+id/grdngboxT"-->
-                <!--android:background="@color/gray"-->
-                <!--android:layout_marginTop="10dp"-->
-                <!--android:layout_marginStart="20dp"-->
-                <!--android:layout_marginEnd="20dp"-->
-                <!--android:textCursorDrawable="@color/darkgray"-->
-                <!--android:textSize="12sp"-->
-                <!--android:paddingStart="10dp"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:paddingTop="10dp"-->
-                <!--android:paddingBottom="10dp"-->
-                <!--android:layout_marginLeft="20dp"-->
-                <!--android:paddingLeft="10dp" />-->
 
             <TextView
                 android:id="@+id/gradT"
@@ -572,8 +523,6 @@
             </LinearLayout>
 
 
-
-
             <TextView
                 android:id="@+id/HdrPrmclrT1"
                 android:layout_width="wrap_content"
@@ -627,28 +576,6 @@
 
 
             </LinearLayout>
-
-
-                <!--<EditText-->
-                    <!--android:id="@+id/spinnerHdrClrP"-->
-                    <!--android:layout_below="@+id/HdrPrmclrT1"-->
-                    <!--android:background="@color/gray"-->
-                    <!--android:editable="false"-->
-                    <!--android:drawableRight="@drawable/ic_arrow_drop_down_black_24dp"-->
-                    <!--android:focusableInTouchMode="false"-->
-                    <!--android:cursorVisible="false"-->
-                    <!--android:layout_marginTop="10dp"-->
-                    <!--android:layout_marginStart="20dp"-->
-                    <!--android:layout_marginEnd="20dp"-->
-                    <!--android:textCursorDrawable="@color/darkgray"-->
-                    <!--android:textSize="12sp"-->
-                    <!--android:paddingStart="10dp"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:paddingTop="10dp"-->
-                    <!--android:paddingBottom="10dp"-->
-                    <!--android:layout_marginLeft="20dp"-->
-                    <!--android:paddingLeft="10dp" />-->
 
 
             <TextView
@@ -705,28 +632,6 @@
 
             </LinearLayout>
 
-                <!--<EditText-->
-                    <!--android:id="@+id/spinnerHdrClrS"-->
-                    <!--android:layout_below="@+id/HdrPrmclrT2"-->
-                    <!--android:editable="false"-->
-                    <!--android:drawableRight="@drawable/ic_arrow_drop_down_black_24dp"-->
-                    <!--android:focusableInTouchMode="false"-->
-                    <!--android:cursorVisible="false"-->
-                    <!--android:background="@color/gray"-->
-                    <!--android:layout_marginTop="10dp"-->
-                    <!--android:layout_marginStart="20dp"-->
-                    <!--android:layout_marginEnd="20dp"-->
-                    <!--android:textCursorDrawable="@color/darkgray"-->
-                    <!--android:textSize="12sp"-->
-                    <!--android:paddingStart="10dp"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:paddingTop="10dp"-->
-                    <!--android:paddingBottom="10dp"-->
-                    <!--android:layout_marginLeft="20dp"-->
-                    <!--android:paddingLeft="10dp" />-->
-
-
             <TextView
                 android:id="@+id/textcolor"
                 android:layout_width="wrap_content"
@@ -781,27 +686,6 @@
 
             </LinearLayout>
 
-            <!--<EditText-->
-                <!--android:id="@+id/textclr"-->
-                <!--android:layout_below="@+id/textcolor"-->
-                <!--android:editable="false"-->
-                <!--android:drawableRight="@drawable/ic_arrow_drop_down_black_24dp"-->
-                <!--android:focusableInTouchMode="false"-->
-                <!--android:cursorVisible="false"-->
-                <!--android:background="@color/gray"-->
-                <!--android:layout_marginTop="10dp"-->
-                <!--android:layout_marginStart="20dp"-->
-                <!--android:layout_marginEnd="20dp"-->
-                <!--android:textCursorDrawable="@color/darkgray"-->
-                <!--android:textSize="12sp"-->
-                <!--android:paddingStart="10dp"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:paddingTop="10dp"-->
-                <!--android:paddingBottom="10dp"-->
-                <!--android:layout_marginLeft="20dp"-->
-                <!--android:paddingLeft="10dp" />-->
-
             <TextView
                 android:id="@+id/spclrqstT"
                 android:layout_width="wrap_content"
@@ -850,21 +734,6 @@
                 android:layout_marginTop="10dp"
                 android:text="Email address" />
 
-            <!--<EditText-->
-                <!--android:id="@+id/editTextemail"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_below="@+id/textViewemail"-->
-                <!--android:layout_toEndOf="@+id/spinnerGrd1"-->
-                <!--android:background="@color/gray"-->
-                <!--android:ems="10"-->
-                <!--android:inputType="textEmailAddress"-->
-                <!--android:paddingBottom="10dp"-->
-                <!--android:paddingLeft="10dp"-->
-                <!--android:paddingStart="10dp"-->
-                <!--android:paddingTop="10dp"-->
-                <!--android:textCursorDrawable="@color/darkgray"-->
-                <!--android:textSize="12sp" />-->
             <EditText
                 android:id="@+id/editTextemail"
                 android:layout_below="@+id/textViewemail"
@@ -875,6 +744,37 @@
                 android:textCursorDrawable="@color/darkgray"
                 android:textSize="12sp"
                 android:inputType="textEmailAddress"
+                android:paddingStart="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:layout_marginLeft="20dp"
+                android:paddingLeft="10dp" />
+
+            <TextView
+                android:id="@+id/licence"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/editTextemail"
+                android:layout_marginLeft="20dp"
+                android:textColor="#272727"
+                android:textSize="15sp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:text="Licence code" />
+
+            <EditText
+                android:id="@+id/licencecode"
+                android:layout_below="@+id/licence"
+                android:background="@color/gray"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:textCursorDrawable="@color/darkgray"
+                android:textSize="12sp"
                 android:paddingStart="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -897,7 +797,7 @@
                 android:textStyle="bold"
                 android:text="Submit"
                 android:layout_marginBottom="20dp"
-                android:layout_below="@+id/editTextemail"
+                android:layout_below="@+id/licencecode"
                 android:layout_marginTop="30dp"
                 android:background="@drawable/buttoncorner" />
 

@@ -81,7 +81,7 @@ public class FormActivity extends AppCompatActivity {
 
      int currentColor;
      Spinner spinerGrd,spinnerPgQL,spinnerNews;
-     EditText Seriestitle,issue,publsher,pubdate,sortby,addnote,emailadd, Artname,CvrArtname;
+     EditText Seriestitle,issue,publsher,pubdate,sortby,addnote,emailadd, Artname,CvrArtname, licecode;
      EditText PrmyCLR,ScryCLR,TextColorTemp;
      Spinner grade,pgqlty,news,Phclr,Shclr;
      Button ButtonSubmit;
@@ -157,6 +157,7 @@ public class FormActivity extends AppCompatActivity {
         sortby=(EditText)findViewById(R.id.storyby);
         addnote=(EditText)findViewById(R.id.sclrqst);
         emailadd=(EditText)findViewById(R.id.editTextemail);
+        licecode=(EditText)findViewById(R.id.licencecode);
         PrmyCLR=(EditText)findViewById(R.id.spinnerHdrClrP);
         PrmryClrBtn=(ImageButton)findViewById(R.id.spinnerHdrClrPbtn);
         ScnClrBtn=(ImageButton)findViewById(R.id.spinnerPdrClrPbtn);
@@ -605,7 +606,12 @@ public class FormActivity extends AppCompatActivity {
             return false;
         }
 
-        return true;
+        if (licecode.getText().toString().length() == 0) {
+            licecode.setError("Licence code not entered");
+            licecode.requestFocus();
+            return false;
+        }
+            return true;
     }
 
     private void SubmitData() {
@@ -636,8 +642,9 @@ public class FormActivity extends AppCompatActivity {
         final String email =  emailadd.getText().toString().trim();
         final String Artnametxt = Artname.getText().toString().trim();
         final String CArtname = CvrArtname.getText().toString().trim();
+        final String LicnCode=licecode.getText().toString().trim();
 
-       // Log.e("pgqlty",pageqlty);
+       // Log.e("pgqlty",LicnCode);
 
         // encodeArt
 
@@ -727,14 +734,14 @@ public class FormActivity extends AppCompatActivity {
                 parameters.put("news_stand", newstand);
                 parameters.put("story_by", sortbytxt);
                 parameters.put("art", imageStringArt);
-                parameters.put("art_name", Artnametxt);
-                //parameters.put("cover_art", imageStringCArt);
                 parameters.put("cover_art_name", CArtname);
+                parameters.put("art_name", Artnametxt);
                 parameters.put("header_primary_color", hdrprmclr);
                 parameters.put("header_secondary_color", hdrscndclr);
                 parameters.put("font_color", textcolor);
                 parameters.put("additional_notes", addnotes);
                 parameters.put("email", email);
+                parameters.put("licence_code", LicnCode);
                 return parameters;
             }
         };
