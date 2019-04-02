@@ -492,14 +492,11 @@ public class FormActivity extends AppCompatActivity {
             @Override
             public void onOk(AmbilWarnaDialog dialog, int color) {
                 currentColor = color;
-                //PrmyCLR.setBackgroundColor(color);
                 String Selctedcolor=Integer.toHexString(currentColor);
                 Selctedcolor=Selctedcolor.substring(2);
                 String ColorCode="#"+Selctedcolor;
                 PrmyCLR.setText(ColorCode);
 
-               // PrmyCLR.setText("#"+Selctedcolor);
-                Log.e("color", ColorCode);
             }
 
             @Override
@@ -510,20 +507,15 @@ public class FormActivity extends AppCompatActivity {
         dialog.show();
     }
 
-
-
     private void openDialogSecndry(boolean supportsAlpha) {
         AmbilWarnaDialog dialog = new AmbilWarnaDialog(this, currentColor, supportsAlpha, new AmbilWarnaDialog.OnAmbilWarnaListener() {
             @Override
             public void onOk(AmbilWarnaDialog dialog, int color) {
                 currentColor = color;
-               // ScryCLR.setBackgroundColor(color);
                 String Selctedcolor=Integer.toHexString(currentColor);
                 Selctedcolor=Selctedcolor.substring(2);
                 String ColorCode="#"+Selctedcolor;
                 ScryCLR.setText(ColorCode);
-
-                Log.e("color",ColorCode);
             }
 
             @Override
@@ -539,13 +531,11 @@ public class FormActivity extends AppCompatActivity {
             @Override
             public void onOk(AmbilWarnaDialog dialog, int color) {
                 currentColor = color;
-                //TextColorTemp.setBackgroundColor(color);
                 String Selctedcolor=Integer.toHexString(currentColor);
                 Selctedcolor=Selctedcolor.substring(2);
                 String ColorCode="#"+Selctedcolor;
                 TextColorTemp.setText(ColorCode);
 
-                Log.e("color",ColorCode);
             }
 
             @Override
@@ -567,16 +557,6 @@ public class FormActivity extends AppCompatActivity {
             return false;
 
         }
-//        if (imageArt.getDrawable() == null){
-//            imageArt.requestFocus();
-//
-//            return false;
-//        }
-//        if (imageCArt.getDrawable() == null){
-//            imageCArt.requestFocus();
-//
-//            return false;
-//        }
 
         if (PrmyCLR.getText().toString().length() == 0) {
             PrmyCLR.setError("Please select color");
@@ -615,6 +595,7 @@ public class FormActivity extends AppCompatActivity {
     }
 
     private void SubmitData() {
+
         progressDialog = new ProgressDialog(FormActivity.this);
         progressDialog.setMessage("Uploading, please wait...");
         progressDialog.show();
@@ -632,7 +613,6 @@ public class FormActivity extends AppCompatActivity {
         else {
              pageqlty = spinnerPgQL.getSelectedItem().toString();
         }
-       // final String pageqlty = spinnerPgQL.getSelectedItem().toString();
         final String newstand = spinnerNews.getSelectedItem().toString();
         final String sortbytxt = sortby.getText().toString().trim();
         final String hdrprmclr =  PrmyCLR.getText().toString().trim();
@@ -643,10 +623,6 @@ public class FormActivity extends AppCompatActivity {
         final String Artnametxt = Artname.getText().toString().trim();
         final String CArtname = CvrArtname.getText().toString().trim();
         final String LicnCode=licecode.getText().toString().trim();
-
-       // Log.e("pgqlty",LicnCode);
-
-        // encodeArt
 
         if (imageArt.getDrawable()==null)
         {
@@ -660,30 +636,11 @@ public class FormActivity extends AppCompatActivity {
 
         }
 
-
-        // encodeCArt
-//        if (imageCArt.getDrawable()==null)
-//        {
-//            imageStringCArt=getString(R.string.BlankImage);
-//        }
-//        else {
-//
-//            ByteArrayOutputStream baosCA = new ByteArrayOutputStream();
-//            bitmapCA.compress(Bitmap.CompressFormat.JPEG, 100, baosCA);
-//            byte[] imageBytesCA = baosCA.toByteArray();
-//            imageStringCArt = Base64.encodeToString(imageBytesCA, Base64.DEFAULT);
-//        }
-        //  Log.e("imageArt", String.valueOf(imageStringArt));
-        //   Log.e("imageCArt", String.valueOf(imageStringCArt));
-
-        String url="http://demotbs.com/dev/comicskin/webservices/registration?";
-
+         String url="http://comicskin.net/webservices/registration?";
         StringRequest request = new StringRequest(Request.Method.POST,url,
                 new Response.Listener<String>(){
                     @Override
                     public void onResponse(String s) {
-                        Log.e("responce", s);
-
                         progressDialog.dismiss();
 
                         try {
@@ -713,6 +670,7 @@ public class FormActivity extends AppCompatActivity {
                             progressDialog.dismiss();
                         }
                     }
+
                 },new Response.ErrorListener(){
             @Override
             public void onErrorResponse(VolleyError volleyError) {
@@ -745,7 +703,6 @@ public class FormActivity extends AppCompatActivity {
                 return parameters;
             }
         };
-
         RequestQueue rQueue = Volley.newRequestQueue(FormActivity.this);
         rQueue.add(request);
     }

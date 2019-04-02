@@ -48,7 +48,8 @@ public class HistoryActivity extends AppCompatActivity {
 
         mywebview = (WebView) findViewById(R.id.webView1);
         mywebview.setWebViewClient(new MyWebViewClient());
-        String url="http://demotbs.com/dev/comicskin/Webservices/history";
+    //    String url="http://demotbs.com/dev/comicskin/Webservices/history";
+        String url="http://comicskin.net/Webservices/history";
         mywebview.getSettings().setJavaScriptEnabled(true);
         mywebview.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
         mywebview.loadUrl(url);
