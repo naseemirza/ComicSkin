@@ -83,12 +83,9 @@ public class FormActivity extends AppCompatActivity {
      Spinner spinerGrd,spinnerPgQL,spinnerNews;
      EditText Seriestitle,issue,publsher,pubdate,sortby,addnote,emailadd, Artname,CvrArtname, licecode;
      EditText PrmyCLR,ScryCLR,TextColorTemp;
-     Spinner grade,pgqlty,news,Phclr,Shclr;
      Button ButtonSubmit;
      ImageButton PrmryClrBtn,ScnClrBtn,TextClr;
-
-    int mYear, mMonth, mDay;
-
+    // int mYear, mMonth, mDay;
     String Actname,temp1;
     TextView textname;
 
@@ -97,16 +94,14 @@ public class FormActivity extends AppCompatActivity {
     LinearLayout Selctgrad;
     TextView gradText;
 
-   Bitmap bitmapA,bitmapCA;
+    Bitmap bitmapA;
     ProgressDialog progressDialog;
-    ImageButton chooseArt; //,chooseCvrArt
-    ImageView imageArt; //,imageCArt
+    ImageButton chooseArt;
+    ImageView imageArt;
     int PICK_IMAGE_REQUEST = 111;
-    int PICK_IMAGE_REQUEST1 = 112;
 
-   String pageqlty;
+     String pageqlty;
      String imageStringArt;
-     String imageStringCArt;
 
     String monthYearStr;
     SimpleDateFormat sdf = new SimpleDateFormat("MMM yyyy");
@@ -137,9 +132,7 @@ public class FormActivity extends AppCompatActivity {
         });
 
         imageArt = (ImageView)findViewById(R.id.imageart);
-       // imageCArt = (ImageView)findViewById(R.id.imageCovrart);
         chooseArt = (ImageButton)findViewById(R.id.addart);
-       // chooseCvrArt = (ImageButton)findViewById(R.id.addCovrartt);
         ButtonSubmit=(Button)findViewById(R.id.buttonsbmt);
         Artname=(EditText)findViewById(R.id.artname);
         CvrArtname=(EditText)findViewById(R.id.CArtname);
@@ -179,14 +172,10 @@ public class FormActivity extends AppCompatActivity {
                     gradText.setVisibility(View.GONE);
                     Selctgrad.setVisibility(View.GONE);
                 }
-               // Log.e("value",result);
-
             }
         });
 
         spinerGrd = (Spinner) findViewById(R.id.spinnerGrd);
-        //spinerGrd.setFocusable(true);
-       // spinerGrd.setFocusableInTouchMode(true);
         String[] users = new String[]{
                 "Please Select Grade*",
                 "10","9.8","9.6","9.4","9.2","9.0","8.5","8.0","7.5","7.0",
@@ -214,7 +203,6 @@ public class FormActivity extends AppCompatActivity {
                 View view = super.getDropDownView(position, convertView, parent);
                 TextView tv = (TextView) view;
                 if(position == 0){
-                    // Set the hint text color gray
                     tv.setTextColor(Color.GRAY);
 
                 }
@@ -228,8 +216,6 @@ public class FormActivity extends AppCompatActivity {
         spinerGrd.setAdapter(spinnerArrayAdapter);
 
         spinnerPgQL = (Spinner) findViewById(R.id.spinnerPgqlt);
-        //spinnerPgQL.setFocusable(true);
-        //spinnerPgQL.setFocusableInTouchMode(true);
         String[] users1 = new String[]{
                 "Please Select Page Quality*",
                 "White Pages",
@@ -259,7 +245,6 @@ public class FormActivity extends AppCompatActivity {
                 View view = super.getDropDownView(position, convertView, parent);
                 TextView tv = (TextView) view;
                 if(position == 0){
-                    // Set the hint text color gray
                     tv.setTextColor(Color.GRAY);
                 }
                 else {
@@ -271,11 +256,7 @@ public class FormActivity extends AppCompatActivity {
         spinnerArrayAdapter1.setDropDownViewResource(R.layout.spinneritems);
         spinnerPgQL.setAdapter(spinnerArrayAdapter1);
 
-
-
         spinnerNews = (Spinner) findViewById(R.id.spinnerNewstnd);
-        //spinnerPgQL.setFocusable(true);
-        //spinnerPgQL.setFocusableInTouchMode(true);
         String[] users1News = new String[]{
                 "News Stand or Direct Distribution*",
                 "News Stand",
@@ -303,7 +284,6 @@ public class FormActivity extends AppCompatActivity {
                 View view = super.getDropDownView(position, convertView, parent);
                 TextView tv = (TextView) view;
                 if(position == 0){
-                    // Set the hint text color gray
                     tv.setTextColor(Color.GRAY);
                 }
                 else {
@@ -348,8 +328,6 @@ public class FormActivity extends AppCompatActivity {
         pubdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-               // openDatePicker();
                 MonthYearPickerDialog pickerDialog = new MonthYearPickerDialog();
                 pickerDialog.setListener(new DatePickerDialog.OnDateSetListener() {
                     @Override
@@ -369,8 +347,6 @@ public class FormActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-               // SubmitData();
-
                 if(isValidate())
                 {
                     SubmitData();
@@ -389,16 +365,6 @@ public class FormActivity extends AppCompatActivity {
             }
 
         });
-
-//        chooseCvrArt.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent();
-//                intent.setType("image/*");
-//                intent.setAction(Intent.ACTION_PICK);
-//                startActivityForResult(Intent.createChooser(intent, "Select Image"), PICK_IMAGE_REQUEST1);
-//            }
-//        });
     }
 
     String formatMonthYear(String str) {
@@ -425,66 +391,7 @@ public class FormActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
             }
-
-
-//        if (requestCode == PICK_IMAGE_REQUEST1 && resultCode == RESULT_OK && data != null && data.getData() != null) {
-//            Uri filePathCA = data.getData();
-//
-//            try {
-//
-//                bitmapCA = MediaStore.Images.Media.getBitmap(getContentResolver(), filePathCA);
-//                imageCArt.setImageBitmap(bitmapCA);
-//            } catch (Exception e) {
-//                e.printStackTrace();
-//            }
-//        }
     }
-
-
-//    private void openDatePicker() {
-//
-//        MonthYearPickerDialog pickerDialog = new MonthYearPickerDialog();
-//        pickerDialog.setListener(new DatePickerDialog.OnDateSetListener() {
-//            @Override
-//            public void onDateSet(DatePicker datePicker, int year, int month, int i2) {
-//                monthYearStr = year + "-" + (month + 1) + "-" + i2;
-//                pubdate.setText(formatMonthYear(monthYearStr));
-//            }
-//        });
-//        pickerDialog.show(getSupportFragmentManager(), "MonthYearPickerDialog");
-//    }
-//
-//    String formatMonthYear(String str) {
-//        Date date = null;
-//        try {
-//            date = input.parse(str);
-//        } catch (ParseException e) {
-//            e.printStackTrace();
-//        }
-//        return sdf.format(date);
-//    }
-
-//        final Calendar c = Calendar.getInstance();
-//        mYear = c.get(Calendar.YEAR);
-//        mMonth = c.get(Calendar.MONTH);
-//        mDay = c.get(Calendar.DAY_OF_MONTH);
-//
-//        DatePickerDialog datePickerDialog = new DatePickerDialog(this,
-//                new DatePickerDialog.OnDateSetListener() {
-//
-//
-//                    @Override
-//                    public void onDateSet(DatePicker view, int year,
-//                                          int monthOfYear, int dayOfMonth) {
-//
-//                        //pubdate.setText(dayOfMonth + "-" + (monthOfYear + 1) + "-" + year);
-//                        String stringOfDate = (monthOfYear + 1) + "/" + year;
-//                        pubdate.setText(stringOfDate);
-//
-//                    }
-//                }, mYear, mMonth, mDay);
-//        datePickerDialog.show();
-        //}
 
     private void openDialogPrmry(boolean supportsAlpha) {
 
@@ -635,14 +542,12 @@ public class FormActivity extends AppCompatActivity {
             imageStringArt = Base64.encodeToString(imageBytesA, Base64.DEFAULT);
 
         }
-
          String url="http://comicskin.net/webservices/registration?";
-        StringRequest request = new StringRequest(Request.Method.POST,url,
+         StringRequest request = new StringRequest(Request.Method.POST,url,
                 new Response.Listener<String>(){
                     @Override
                     public void onResponse(String s) {
                         progressDialog.dismiss();
-
                         try {
                             JSONObject obj = new JSONObject(s);
                             String success=obj.getString("s");
@@ -662,7 +567,6 @@ public class FormActivity extends AppCompatActivity {
                             else{
                                 Toast.makeText(FormActivity.this, msg, Toast.LENGTH_LONG).show();
                             }
-
                         }
                         catch (JSONException e){
                             e.printStackTrace();
