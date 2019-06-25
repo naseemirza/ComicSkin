@@ -333,8 +333,8 @@ public class FormActivity extends AppCompatActivity {
                     @Override
                     public void onDateSet(DatePicker datePicker, int year, int month, int i2) {
 
-                        monthYearStr = (year + "-" + (month + 1) + "-" + i2);
-                        pubdate.setText(formatMonthYear(monthYearStr));
+                        monthYearStr = (month + "/" + year);
+                        pubdate.setText(monthYearStr);
                     }
 
                 });
@@ -367,15 +367,15 @@ public class FormActivity extends AppCompatActivity {
         });
     }
 
-    String formatMonthYear(String str) {
-        Date date = null;
-        try {
-            date = input.parse(str);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        return sdf.format(date);
-    }
+//    String formatMonthYear(String str) {
+//        Date date = null;
+//        try {
+//            date = input.parse(str);
+//        } catch (ParseException e) {
+//            e.printStackTrace();
+//        }
+//        return sdf.format(date);
+//    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
